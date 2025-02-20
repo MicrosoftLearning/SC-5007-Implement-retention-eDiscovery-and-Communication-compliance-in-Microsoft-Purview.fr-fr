@@ -26,17 +26,13 @@ Votre tâche consiste à créer et gérer des stratégies de rétention qui resp
 Ici, vous allez créer une stratégie de rétention qui s’applique à l’ensemble de l’organisation.
 
 1. Dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous.
-1. Un message à propos du nouveau portail Microsoft Purview s’affiche à l’écran. Sélectionnez l’option permettant d’accepter les conditions de divulgation de flux de données et la déclaration de confidentialité, puis sélectionnez **Essayer maintenant**.
+1. Un message à propos du nouveau portail Microsoft Purview s’affiche à l’écran. Sélectionnez l’option permettant d’accepter les conditions de divulgation de flux de données et la déclaration de confidentialité, puis sélectionnez **Démarrer**.
 
     >![Capture d’écran de l’écran Bienvenue sur le nouveau portail de conformité Microsoft Purview.](./Media/welcome-purview-portal.png)
 
-1. Sélectionnez **Afficher toutes les solutions**.
-1. Sous **Gouvernance des données**, sélectionnez la carte **Gestion du cycle de vie des données**.
-
-    >![Capture d’écran montrant la carte Gestion du cycle de vie des données dans le nouveau portail Microsoft Purview.](./Media/data-lifecycle-management-card.png)
-
+1. Sélectionnez **Solutions** > **Gestion du cycle de vie des données**.
 1. Développez **Stratégies**, puis sélectionnez **Stratégies de rétention** dans le volet de navigation de gauche.
-1. Sélectionnez **+ Nouvelles stratégies de rétention**.
+1. Sélectionnez **+ Nouvelle stratégie de rétention**.
 1. Sur la page **Nommer votre stratégie de rétention**, saisissez le nom et la description :
 
    - **Nom :** `Company wide`
@@ -63,8 +59,6 @@ Ici, vous allez créer une stratégie de rétention qui s’applique à l’ense
 1. Cliquez sur **Suivant**.
 1. Sur la page **Vérifier et terminer**, sélectionnez **Envoyer**.
 1. Une fois votre stratégie créée, sélectionnez **Terminé**.
-
-Vous avez créé une stratégie de rétention pour différents emplacements. Cette stratégie conserve les éléments pendant trois ans à partir de la date de la dernière modification.
 
 Vous avez créé une stratégie de rétention à l’échelle de l’entreprise qui conserve les éléments pendant trois ans à partir de la date de la dernière modification.
 
@@ -136,7 +130,7 @@ Dans cette tâche, vous allez utiliser PowerShell pour créer et gérer des stra
     Connect-IPPSSession
     ```
 
-1. Si vous y êtes invité, connectez-vous en tant qu’utilisateur disposant des autorisations appropriées.
+1. Lorsque vous y êtes invité, connectez-vous en tant qu’utilisateur disposant des autorisations appropriées.
 1. Exécutez la cmdlet suivante pour créer la première stratégie de rétention pour tous les emplacements à l’exception de Teams :
 
     ```powershell
@@ -156,8 +150,7 @@ Vous avez créé des stratégies de rétention via PowerShell avec une période 
 Ici, vous allez créer une stratégie de rétention avec une étendue adaptative ciblant des services spécifiques tels que le service juridique et les points de vente.
 
 1. Dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous.
-1. Sélectionnez **Afficher toutes les solutions**.
-1. Sous **Core**, sélectionnez la carte **Paramètres**.
+1. Dans la barre de navigation gauche, sélectionnez **Paramètres**.
 1. Développez **Rôles et étendues**, puis sélectionnez **Étendues adaptatives**.
 1. Sur la page **Étendues adaptatives**, sélectionnez **+ Créer une étendue**.
 1. Sur la page **Nommer votre étendue de stratégie adaptative**, saisissez :
@@ -179,14 +172,13 @@ Ici, vous allez créer une stratégie de rétention avec une étendue adaptative
    - **Opérateur de requête** : Ou
    - **Attribut** : Department
    - **Opérateur** : Est égal à
-   - **Valeur** : Retail
+   - **Valeur** : `Retail`
 
     >![Capture d’écran montrant la requête pour définir les valeurs des utilisateurs.](./Media/query-to-define-users.png)
 
 1. Sélectionnez **Suivant**, puis **Envoyer** sur la page **Examiner et terminer**.
 1. Une fois votre étendue créée, sélectionnez **Terminé** pour revenir à la page **Étendues adaptatives**.
-1. Sélectionnez **Accueil** dans le volet de navigation de gauche pour revenir à la page principale du portail Microsoft Purview.
-1. Sélectionnez **Afficher toutes les solutions**, puis **Gestion du cycle de vie des données** sous **Gouvernance des données**.
+1. Sélectionnez **Solutions** > **Gestion du cycle de vie des données**.
 1. Développez **Stratégies**, puis sélectionnez **Stratégies de rétention**.
 1. Sur la page **Stratégies de rétention**, sélectionnez **+ Nouvelle stratégie de rétention**.
 1. Sur la page **Nommer votre stratégie de rétention**, saisissez :
@@ -198,7 +190,12 @@ Ici, vous allez créer une stratégie de rétention avec une étendue adaptative
 1. Sur la page **Étendue de la stratégie**, sélectionnez **Suivant**.
 1. Sur la page **Choisir le type de stratégie de rétention à créer**, sélectionnez **Adaptative**, puis **Suivant**.
 1. Sur la page **Choisir des étendues et emplacements de stratégie adaptative**, sélectionnez **+ Ajouter des étendues** et choisissez l’étendue **Rétention des documents juridiques**.
-1. Sous **Choisir les emplacements pour appliquer la stratégie**, vérifiez que **Boîtes aux lettres Exchange** et **Comptes OneDrive** sont activés, puis sélectionnez **Suivant**.
+1. Sous **Choisir les emplacements pour appliquer la stratégie**, activez :
+
+   - Boîtes aux lettres Exchange
+   - Comptes OneDrive
+
+1. Cliquez sur **Suivant**.
 1. Sur la page **Décider si vous voulez conserver du contenu, le supprimer ou les deux**, saisissez :
 
    - **Conserver les éléments pendant une période spécifique** : 5 ans
