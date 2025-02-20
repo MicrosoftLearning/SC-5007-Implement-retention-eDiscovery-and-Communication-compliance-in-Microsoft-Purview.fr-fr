@@ -22,17 +22,16 @@ Vous n’êtes pas autorisé à convertir un locataire en abonnement payant. Les
 Dans cette tâche, vous allez créer une stratégie à l’aide d’un modèle prédéfini pour résoudre rapidement les scénarios de conformité courants.
 
 1. Dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous.
-1. Sélectionnez **Afficher toutes les solutions**.
-1. Sous **Risque et Conformité**, sélectionnez la carte **Conformité des communications**.
+1. Sélectionnez **Solutions** > **Conformité des communications**.
 1. Dans le volet de navigation de gauche, sélectionnez **Stratégies**.
 1. Sélectionnez **Créer une stratégie** et passez en revue les modèles de stratégie disponibles :
 
-   - **Interactions Copilot** : surveille toutes les interactions avec Copilot pour Microsoft 365.
+   - **Interactions Microsoft Copilot** : surveille toutes les interactions avec Copilot pour Microsoft 365.
    - **Contenu inapproprié** : détecte le contenu à caractère haineux, violent, sexuel et lié à l’auto-mutilation dans Microsoft Teams.
    - **Texte inapproprié** : signale les menaces, la discrimination et le harcèlement dans Exchange Online, Microsoft Teams et Viva Engage.
    - **Images inappropriées** : identifie les images pour adultes et osées dans Exchange Online et Microsoft Teams.
    - **Informations sensibles** : surveille les informations sensibles dans Exchange Online, Microsoft Teams et Viva Engage avec un pourcentage de révision inférieur.
-   - **Conformité réglementaire** : assure la conformité aux réglementations financières dans Exchange Online, Microsoft Teams et Viva Engage.
+   - **Conformité réglementaire financière** : assure la conformité aux réglementations financières dans Exchange Online, Microsoft Teams et Viva Engage.
    - **Conflit d’intérêt** : détecte les conflits d’intérêt potentiels en interne dans Exchange Online, Microsoft Teams et Viva Engage.
 
 1. Sélectionnez le modèle de stratégie pour **Détecter un texte inapproprié**.
@@ -46,9 +45,6 @@ Vous avez créé une stratégie de conformité des communications à l’aide du
 Ici, vous allez modifier un modèle de stratégie pour l’adapter aux besoins spécifiques de votre organisation.
 
 1. Vous devriez toujours être sur la page **Stratégies** de **Conformité des communications** dans le portail Microsoft Purview.
-
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez la carte **Afficher toutes les solutions** > **Conformité des communications** sous **Risque et Conformité**.
-
 1. Sélectionnez **Créer une stratégie** > **Détecter les images inappropriées**.
 1. Sur la page volante **Détecter les communications pour les images inappropriées**, sélectionnez **Personnaliser la stratégie** en bas de la page volante.
 1. Sélectionnez **Personnaliser la stratégie** en bas de la page volante.
@@ -71,9 +67,6 @@ Vous avez personnalisé une stratégie de conformité des communications à l’
 Dans cette tâche, vous allez créer une stratégie de conformité des communications à partir de zéro pour répondre à des exigences de conformité uniques.
 
 1. Vous devriez toujours être sur la page **Stratégies** de **Conformité des communications** dans le portail Microsoft Purview.
-
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez la carte **Afficher toutes les solutions** > **Conformité des communications** sous **Risque et Conformité**.
-
 1. Sélectionnez **Créer une stratégie** > **Stratégie personnalisée**.
 1. Sur la page **Nommer et décrire votre stratégie**, saisissez :
 
@@ -97,8 +90,7 @@ Dans cette tâche, vous allez créer une stratégie de conformité des communica
 
 1. Cliquez sur **Suivant**.
 1. Sur la page **Choisir les conditions et le pourcentage de révision**, conservez les valeurs par défaut sélectionnées pour **Sens de la communication**.
-1. Sous **Conditions**, activez l’option permettant d’utiliser le **Nouveau générateur de conditions (préversion)**.
-1. Sélectionnez **+ Ajouter une condition** > **Le contenu correspond à un classifieur entraînable**.
+1. Sous **Conditions**, sélectionnez **+ Ajouter une condition** > **Le contenu correspond à un classifieur entraînable**.
 1. Sous **Le content correspond à des classifieurs entraînables**, sélectionnez **Ajouter** > **Classifieurs entraînables**.
 1. Sur la page volante **Classifieurs entraînables** à droite, sélectionnez des classifieurs pour **Collusion réglementaire**, **Manipulation de stock**, **Divulgation non autorisée** et **Sabotage d’entreprise**.
 1. Sélectionnez **Ajouter** en bas de la page volante **Classifieurs entraînables** à droite.

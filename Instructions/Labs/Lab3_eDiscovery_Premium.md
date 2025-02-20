@@ -30,20 +30,19 @@ Votre tâche consiste à créer et gérer des cas eDiscovery qui respectent les 
 Pour exporter des fichiers, vous avez besoin d’autorisations spécifiques en raison de l’accès direct que cette option octroie sur les fichiers utilisateur.
 
 1. Dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous.
-1. Sélectionnez la carte **Paramètres**.
-
-   Si vous ne voyez pas la carte **Paramètres**, sélectionnez **Afficher toutes les solutions** et la carte **Paramètres** sous la section **Core**.
-
+1. Dans le volet de navigation de gauche, sélectionnez **Paramètres**.
 1. Dans le volet de navigation de gauche, développez **Rôles et étendues**, puis sélectionnez **Groupes de rôles**.
 1. Sur la page **Groupes de rôles pour les solutions Microsoft Purview**, sélectionnez **Gestionnaire eDiscovery**.
 1. Sur la page volante **Gestionnaire eDiscovery** à droite, sélectionnez **Modifier**.
 1. Sur la page **Gérer le Gestionnaire eDiscovery**, sélectionnez **Choisir des utilisateurs**.
-1. Sur la page volante **Choisir des utilisateurs** à droite, sélectionnez l’utilisateur que vous utiliserez pour effectuer cet exercice interactif, puis **Sélectionner**.
+1. Sur la page volante **Choisir des utilisateurs** à droite, sélectionnez l’utilisateur que vous utiliserez pour mener l’enquête eDiscovery dans les étapes suivantes, puis sélectionnez **Sélectionner**.
+
+    >**Note** : vérifiez que vous sélectionnez l’utilisateur qui examine les données et exporte les résultats de la recherche.
+
 1. De retour sur la page **Gérer le Gestionnaire eDiscovery**, sélectionnez **Suivant**.
 1. Sur la page **Gérer le Gestionnaire eDiscovery**, sélectionnez **Suivant**.
 1. Sur la page **Vérifier le groupe de rôles et terminer**, sélectionnez **Enregistrer** pour ajouter votre utilisateur au groupe de rôles Gestionnaire eDiscovery.
 1. Une fois que vous avez ajouté les utilisateurs, sélectionnez **Terminé** sur la page **Vous avez mis à jour le groupe de rôles**.
-1. Sélectionnez **Accueil** pour revenir à la page d’accueil du portail Microsoft Purview.
 
 Vous avez accordé l’autorisation Gestionnaire eDiscovery.
 
@@ -51,19 +50,17 @@ Vous avez accordé l’autorisation Gestionnaire eDiscovery.
 
 Maintenant que vous disposez des autorisations nécessaires, vous pouvez créer un cas eDiscovery pour commencer votre enquête.
 
-1. Vous devriez être sur la page d’accueil du portail Microsoft Purview.
+1. Dans Microsoft Purview, sélectionnez **Solutions** > **eDiscovery**.
 
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous.
+   Cela vous amène directement à l’expérience **classique** d’**eDiscovery (Premium)**.
 
-1. Sélectionnez **Afficher toutes les solutions**.
-1. Sous **Risque et Conformité**, sélectionnez la carte **eDiscovery**.
-1. Dans le volet de navigation gauche, développez **Cas Premium**, puis sélectionnez **Cas**.
-1. Sur la page **eDiscovery (Premium)**, sélectionnez **+ Créer un cas**.
+1. Sur la page **eDiscovery (Premium)**, sélectionnez l’onglet des **Cas**, puis **+ Créer un cas**.
 1. Sur la page volante **Nommer votre cas** à droite, saisissez :
 
    - **Nom :** `Legal Investigation 2024`
    - **Description** : `eDiscovery case for the 2024 legal investigation involving relevant emails and documents.`
 
+1. Cliquez sur **Suivant**.
 1. Sur la page **Ajouter des membres de l’équipe et configurer les paramètres**, veillez à ajouter l’utilisateur qui mènera l’enquête, puis sélectionnez **Suivant**.
 1. Sur la page **Vérifier votre cas**, sélectionnez **Envoyer**, puis **Terminé**.
 
@@ -74,9 +71,6 @@ Vous avez créé un cas eDiscovery nommé _Legal Investigation 2024_.
 Maintenant que votre cas est créé, vous devez ajouter des consignataires. Les consignataires sont des personnes qui peuvent disposer d’informations pertinentes pour l’enquête.
 
 1. Après avoir créé le cas dans la tâche précédente, vous devriez être dans l’onglet **Vue d’ensemble** du cas **Legal Investigation 2024**.
-
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez la carte **eDiscovery** sous la section **Risque et Conformité**. Sélectionnez **Cas Premium** > **Cas**, puis le nouveau cas créé **Legal Investigation 2024**.
-
 1. Sélectionnez l’onglet **Sources de données** dans la navigation supérieure, puis **Ajouter une source de données** > **Ajouter de nouveaux consignataires**.
 1. Sur la page volante **Nouveau consignataire**, sous **Sélectionner le consignataire**, ajoutez des consignataires à votre cas, puis sélectionnez **Suivant**.
 1. Sur la page **Paramètres de conservation**, vérifiez que les consignataires que vous avez ajoutés à l’étape précédente sont sélectionnés pour être placés en conservation.
@@ -89,9 +83,6 @@ Vous avez ajouté des consignataires au cas _Legal Investigation 2024_.
 Avec les consignataires ajoutés, vous pouvez maintenant exécuter une estimation de collection pour obtenir une vue d’ensemble du volume de données et de la pertinence.
 
 1. Après avoir ajouté des consignataires au cas dans la tâche précédente, vous devriez toujours être dans l’onglet **Sources de données** du cas **Legal Investigation 2024**.  
-
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez la carte **eDiscovery** sous la section **Risque et Conformité**. Sélectionnez **Cas Premium** > **Cas**, puis le nouveau cas créé **Legal Investigation 2024**.
-
 1. Sélectionnez l’onglet **Collections** dans la navigation supérieure, puis **+ Nouvelle collection**.
 1. Dans la configuration de **Nouvelle collection**, saisissez **un nom et une description** pour la collection. Entrez :
 
@@ -112,6 +103,10 @@ Avec les consignataires ajoutés, vous pouvez maintenant exécuter une estimatio
 1. Sur la page **Définir votre requête de recherche**, utilisez le générateur de requêtes pour créer une recherche afin de rechercher du contenu pertinent pour le cas :
 
    - Utilisez l’opérateur **ET** pour rechercher des **Mots clés** qui sont **Égal** à `legal`.
+
+    >**Note** : vous devrez peut-être supprimer l’option permettant de **sélectionner un filtre** après avoir créé la requête de recherche pour rechercher des mots clés qui sont **légaux**. Si cette option est présente, elle vous empêche d’ajouter le sous-groupe à l’étape suivante.
+    >![Capture d’écran montrant le générateur de requêtes dans eDiscovery Premium.](./Media/ediscovery-subgroup-bug.png)
+
    - Sélectionnez **Ajouter un sous-groupe**.
    - Utilisez l’opérateur **OU** pour rechercher des **Mots clés** qui sont **Égal** à `contract`.
 
@@ -141,9 +136,6 @@ Vous avez créé et vérifié une collection nommée _Legal Data Collection_.
 Lorsque la collection est satisfaisante, validez-la dans un jeu à réviser pour une analyse détaillée.
 
 1. Après avoir créé l’estimation de collection dans la tâche précédente, vous devriez toujours être dans l’onglet **Collections** du cas **Legal Investigation 2024**.  
-
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez la carte **eDiscovery** sous la section **Risque et Conformité**. Sélectionnez l’onglet **Cas Premium** > **Cas** > **Legal Investigation 2024** > **Collections**.
-
 1. Sélectionnez la collection **Legal Data Collection**.
 1. Sur la page volante **Legal Data Collection** à droite, sélectionnez **Valider la collection**.
 1. Sur la page **Valider les éléments dans un jeu à réviser**, vérifiez que l’option **Ajouter à un nouveau jeu à réviser** est sélectionnée et nommez-le `Legal Case Review`.
@@ -154,9 +146,6 @@ Vous avez validé la collection dans un jeu à réviser.
 ## Tâche 6 : explorer le jeu à réviser
 
 1. Après avoir validé la collection dans un jeu à réviser dans la tâche précédente, vous devriez toujours être dans l’onglet **Collections** du cas **Legal Investigation 2024**.
-
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez la carte **eDiscovery** sous la section **Risque et Conformité**. Sélectionnez **Cas Premium** > **Cas** > **Legal Investigation 2024**.
-
 1. Sélectionnez l’onglet **Jeux à réviser** dans la navigation supérieure, puis le nouveau jeu à réviser créé **Legal Case Review**.
 1. Sur la page volante **Legal Case Review** à droite, sélectionnez **Ouvrir le jeu à réviser** en bas de la page.
 1. Découvrez ce que vous pouvez faire avec les éléments de votre jeu à réviser :
@@ -180,9 +169,6 @@ Vous avez ouvert et vérifié votre jeu à réviser.
 Pour enregistrer votre travail et pouvoir effectuer une analyse approfondie, vous allez exporter les résultats de la recherche.
 
 1. Vous devriez toujours être dans le jeu à réviser **Legal Case Review** dans eDiscovery (Premium).
-
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez la carte **eDiscovery** sous la section **Risque et Conformité**. Sélectionnez l’onglet **Cas Premium** > **Cas** > **Legal Investigation 2024** > **Jeu à réviser** > **Legal Case Review**.
-
 1. Cochez la case en regard des éléments que vous souhaitez exporter pour une analyse approfondie.
 1. Sélectionnez la liste déroulante pour **Actions** > **Exporter**.
 

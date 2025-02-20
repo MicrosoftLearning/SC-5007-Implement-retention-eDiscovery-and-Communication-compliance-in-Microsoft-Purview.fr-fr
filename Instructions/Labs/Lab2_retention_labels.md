@@ -25,8 +25,7 @@ Votre tâche consiste à créer et gérer des étiquettes de rétention qui resp
 Dans cette tâche, vous allez créer des étiquettes de rétention qui peuvent être affectées aux documents et aux e-mails.
 
 1. Dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous.
-1. Sélectionnez **Afficher toutes les solutions**.
-1. Sous **Risque et Conformité**, sélectionnez la carte **Gestion des enregistrements**.
+1. Sélectionnez **Solutions** > **Gestion des enregistrements**.
 1. Dans le volet de navigation de gauche, sélectionnez **Plan de gestion de fichiers**.
 1. Sur la page **Étiquettes**, sélectionnez **+ Créer une étiquette**.
 1. Sur la page **Nommer votre étiquette de rétention**, saisissez :
@@ -73,9 +72,6 @@ Vous avez créé des étiquettes de rétention pour des enregistrements financie
 Après la tâche 1, vous allez maintenant publier les étiquettes de rétention afin qu’elles soient disponibles pour que les utilisateurs puissent les appliquer aux documents dans les e-mails Exchange et les documents SharePoint.
 
 1. Vous devriez toujours être sur la page **Plan de gestion de fichiers** dans le portail Microsoft Purview.
-
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez **Afficher toutes les solutions**, puis **Gestion des enregistrements** > **Plan de gestion de fichiers**.
-
 1. Sélectionnez la coche en regard de l’étiquette de rétention **Enregistrements financiers**, puis le bouton **Publier des étiquettes**.
 
     >![Capture d’écran montrant où sélectionner l’étiquette de rétention et le bouton Publier des étiquettes.](./Media/publish-labels.png)
@@ -105,9 +101,9 @@ Vous avez publié l’étiquette de rétention pour les enregistrements financie
 
 Après la tâche 1, vous allez maintenant appliquer automatiquement l’étiquette de rétention des enregistrements RH afin que les informations soient conservées.
 
-1. Vous devriez toujours être dans **Gestion des enregistrements** dans le portail Microsoft Purview. 
+1. Vous devriez toujours être dans **Gestion des enregistrements** dans le portail Microsoft Purview.
 
-   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez **Afficher toutes les solutions**, puis **Gestion des enregistrements**.
+   Si ce n’est pas le cas, dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous. Sélectionnez **Solutions** > **Gestion des enregistrements**.
 
 1. Dans le volet de navigation de gauche, développez **Stratégies**, puis sélectionnez **Stratégies des étiquettes**.
 1. Sélectionnez **Appliquer automatiquement une étiquette** pour démarrer la configuration de **Créer une stratégie d’étiquetage automatique**.
