@@ -145,64 +145,68 @@ Dans cette tâche, vous allez utiliser PowerShell pour créer et gérer des stra
 
 Vous avez créé des stratégies de rétention via PowerShell avec une période de rétention de trois ans.
 
-## Tâche 4 : créer une stratégie de conservation avec une étendue adaptative
+<!--- Commenting out until adaptive scope issue is resolved
 
-Ici, vous allez créer une stratégie de rétention avec une étendue adaptative ciblant des services spécifiques tels que le service juridique et les points de vente.
+## Task 4 – Create retention policy with adaptive scope
 
-1. Dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous.
-1. Dans la barre de navigation gauche, sélectionnez **Paramètres**.
-1. Développez **Rôles et étendues**, puis sélectionnez **Étendues adaptatives**.
-1. Sur la page **Étendues adaptatives**, sélectionnez **+ Créer une étendue**.
-1. Sur la page **Nommer votre étendue de stratégie adaptative**, saisissez :
+Here, you will create a retention policy with adaptive scope targeting specific departments like Legal and Retail.
 
-   - **Nom :** `Legal Documents Retention`
-   - **Description** : `Retention for legal related documents`
+1. In Microsoft Edge, navigate to the Microsoft Purview portal, `https://purview.microsoft.com`, and log in.
+1. Select **Settings** from the left navigation bar.
+1. Expand **Roles and scopes** then select **Adaptive scopes**.
+1. On the **Adaptive scopes** page select **+ Create scope**.
+1. On the **Name your adaptive policy scope page**, enter:
 
-1. Cliquez sur **Suivant**.
-1. Sur la page **Attribuer une unité d’administration**, sélectionnez **Suivant**.
-1. Sur la page **Quel type d’étendue voulez-vous créer ?**, sélectionnez **Utilisateurs**, puis **Suivant**.
-1. Sur la page **Créer la requête pour définir les utilisateurs**, sous **Attributs utilisateur**, sélectionnez :
+   - **Name**: `Legal Documents Retention`
+   - **Description**: `Retention for legal related documents`
 
-   - **Attribut** : Department
-   - **Opérateur** : Est égal à
-   - **Valeur** : `Legal`
+1. Select **Next**.
+1. On the **Assign admin unit page**, select **Next**.
+1. On the **What type of scope do you want to create?** page, select **Users** and then **Next**.
+1. On the **Create the query to define users** page, under **User attributes**, select:
 
-1. Ajoutez un deuxième attribut en sélectionnant le bouton **+ Ajouter un attribut** avec les valeurs :
+   - **Attribute**: Department
+   - **Operator**: is equal to
+   - **Value**: `Legal`
 
-   - **Opérateur de requête** : Ou
-   - **Attribut** : Department
-   - **Opérateur** : Est égal à
-   - **Valeur** : `Retail`
+1. Add a second attribute by selecting the **+ Add attribute** button with values:
 
-    >![Capture d’écran montrant la requête pour définir les valeurs des utilisateurs.](./Media/query-to-define-users.png)
+   - **Query operator**: Or
+   - **Attribute**: Department
+   - **Operator**: is equal to
+   - **Value**: `Retail`
 
-1. Sélectionnez **Suivant**, puis **Envoyer** sur la page **Examiner et terminer**.
-1. Une fois votre étendue créée, sélectionnez **Terminé** pour revenir à la page **Étendues adaptatives**.
-1. Sélectionnez **Solutions** > **Gestion du cycle de vie des données**.
-1. Développez **Stratégies**, puis sélectionnez **Stratégies de rétention**.
-1. Sur la page **Stratégies de rétention**, sélectionnez **+ Nouvelle stratégie de rétention**.
-1. Sur la page **Nommer votre stratégie de rétention**, saisissez :
+    >![Screenshot showing the query to define users values.](./Media/query-to-define-users.png)
 
-   - **Nom :** `Legal Data Retention`
-   - **Description** : `Retention of all documents within the legal and retail departments.`
+1. Select **Next** and then **Submit** on the **Review and finish** page.
+1. Once your scope has been created select **Done** to get back to the **Adaptive scopes** page.
+1. Select **Solutions** > **Data Lifecycle Management**.
+1. Expand **Policies** then select **Retention policies**.
+1. On the **Retention policies** page select **+ New retention policy**.
+1. On the **Name your retention policy page**, enter:
 
-1. Cliquez sur **Suivant**.
-1. Sur la page **Étendue de la stratégie**, sélectionnez **Suivant**.
-1. Sur la page **Choisir le type de stratégie de rétention à créer**, sélectionnez **Adaptative**, puis **Suivant**.
-1. Sur la page **Choisir des étendues et emplacements de stratégie adaptative**, sélectionnez **+ Ajouter des étendues** et choisissez l’étendue **Rétention des documents juridiques**.
-1. Sous **Choisir les emplacements pour appliquer la stratégie**, activez :
+   - **Name**: `Legal Data Retention`
+   - **Description**: `Retention of all documents within the legal and retail departments.`
 
-   - Boîtes aux lettres Exchange
-   - Comptes OneDrive
+1. Select **Next**.
+1. On the **Policy Scope** page, select **Next**.
+1. On the **Choose the type of retention policy to create** page, select **Adaptive** and then **Next**.
+1. On the **Choose adaptive policy scopes and locations** page, select **+ Add scopes** and choose the **Legal Documents Retention** scope.
+1. Under **Choose locations to apply the policy** enable:
 
-1. Cliquez sur **Suivant**.
-1. Sur la page **Décider si vous voulez conserver du contenu, le supprimer ou les deux**, saisissez :
+   - Exchange mailboxes
+   - OneDrive accounts
 
-   - **Conserver les éléments pendant une période spécifique** : 5 ans
-   - **Démarrer la période de rétention en fonction de** : Quand les éléments ont été créés
-   - **À la fin de la période de rétention** : Ne rien faire
+1. Select **Next**.
+1. On the **Decide if you want to retain content, delete it, or both** page, enter:
 
-1. Sélectionnez **Suivant** puis **Envoyer** sur la page **Vérifier et terminer**.
-1. Une fois votre stratégie créée, sélectionnez **Terminé**.
+   - **Retain items for a specific period**: 5 years
+   - **Start the retention period based on**: When items were created
+   - **At the end of the retention period**: Do nothing
 
-Vous avez appliqué une étendue adaptative à une stratégie de rétention.
+1. Select **Next** and then **Submit** on the **Review and finish**.
+1. Once your policy is created, select **Done**.
+
+You have successfully applied an adaptive scope to a retention policy.
+
+--->
