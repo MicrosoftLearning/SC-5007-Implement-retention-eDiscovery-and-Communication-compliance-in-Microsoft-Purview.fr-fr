@@ -1,7 +1,7 @@
 ---
 lab:
-  task: Case investigation with eDiscovery (Premium)
-  exercise: Exercise 3 - Case investigation with eDiscovery (Premium)
+  task: Case investigation with eDiscovery
+  exercise: Exercise 3 - Case investigation with eDiscovery
 ---
 
 ## Locataires WWL - Conditions d’utilisation
@@ -14,183 +14,251 @@ Vous n’êtes pas autorisé à convertir un locataire en abonnement payant. Les
 
 # Tâches associées à la compétence de l’exercice 3
 
+Contoso soupçonne que des données de paiement sensibles, notamment des numéros de carte de crédit et de compte, ont été mal manipulées ou divulguées. En tant qu’enquêteur, votre travail consiste à utiliser Microsoft Purview eDiscovery pour créer un dossier, effectuer des recherches dans les sources de données, identifier les contenus sensibles et les masquer avant de produire les résultats à des fins de conformité ou d’examen juridique.
+
 Votre tâche consiste à créer et gérer des cas eDiscovery qui respectent les critères d’enquête :
 
-- **Créer un cas eDiscovery** : configurez un nouveau cas pour commencer votre enquête.
-- **Ajouter des consignataires au cas** : incluez les personnes concernées qui peuvent avoir des données pertinentes.
-- **Créer et exécuter une estimation de collection** : analysez le volume de données et la pertinence de l’enquête.
-- **Vérifier et affiner l’estimation de collection** : vérifiez que la collection répond à vos critères.
-- **Valider la collection dans un jeu à réviser** : préparez les données pour une analyse détaillée.
-- **Exporter les résultats de la recherche** : enregistrez les données collectées à des fins de révision supplémentaire et de conformité.
+- **Créer un cas eDiscovery** : Configurez un dossier pour gérer l’enquête sur les données de paiement.
+- **Effectuer une recherche eDiscovery** : Effectuez une recherche dans les sources de données pour identifier les fichiers susceptibles de contenir des informations relatives aux cartes de paiement ou aux comptes.
+- **Ajouter des éléments au jeu de révision** : Commitez vos résultats de recherche dans un jeu de révision pour une analyse plus approfondie.
+- **Marquer les éléments à réviser** : Appliquez des étiquettes de pertinence et de masquage pour organiser les documents liés au dossier.
+- **Appliquer les masquages** : Utilisez des outils d’annotation pour masquer les informations sensibles telles que les numéros de carte et de compte.
+- **Exporter les résultats** : Exportez les éléments révisés et balisés, ainsi qu’un rapport sur les éléments, pour production.
 
->**Remarque** : ce labo implique d’accéder à un locataire M365 E5 avec des données à explorer pour mener une enquête. Vous pouvez parcourir cet exercice sans données, mais les collections et les jeux à réviser ne donneront aucun résultat.
+   > **Remarque** : ce labo implique d’accéder à un locataire M365 E5 avec des données à explorer pour mener une enquête. Vous pouvez parcourir cet exercice sans données, mais les collections et les jeux à réviser ne donneront aucun résultat.
 
-## Tâche 1 : accorder des autorisations pour eDiscovery (Premium)
+## Tâche 1 : accorder des autorisations pour eDiscovery
 
 Pour exporter des fichiers, vous avez besoin d’autorisations spécifiques en raison de l’accès direct que cette option octroie sur les fichiers utilisateur.
 
 1. Dans Microsoft Edge, accédez au portail Microsoft Purview, `https://purview.microsoft.com`, et connectez-vous.
+
 1. Dans le volet de navigation de gauche, sélectionnez **Paramètres**.
+
 1. Dans le volet de navigation de gauche, développez **Rôles et étendues**, puis sélectionnez **Groupes de rôles**.
+
 1. Sur la page **Groupes de rôles pour les solutions Microsoft Purview**, sélectionnez **Gestionnaire eDiscovery**.
+
 1. Sur la page volante **Gestionnaire eDiscovery** à droite, sélectionnez **Modifier**.
+
 1. Sur la page **Gérer le Gestionnaire eDiscovery**, sélectionnez **Choisir des utilisateurs**.
+
 1. Sur la page volante **Choisir des utilisateurs** à droite, sélectionnez l’utilisateur que vous utiliserez pour mener l’enquête eDiscovery dans les étapes suivantes, puis sélectionnez **Sélectionner**.
 
     >**Note** : vérifiez que vous sélectionnez l’utilisateur qui examine les données et exporte les résultats de la recherche.
 
 1. De retour sur la page **Gérer le Gestionnaire eDiscovery**, sélectionnez **Suivant**.
+
 1. Sur la page **Gérer le Gestionnaire eDiscovery**, sélectionnez **Suivant**.
+
 1. Sur la page **Vérifier le groupe de rôles et terminer**, sélectionnez **Enregistrer** pour ajouter votre utilisateur au groupe de rôles Gestionnaire eDiscovery.
+
 1. Une fois que vous avez ajouté les utilisateurs, sélectionnez **Terminé** sur la page **Vous avez mis à jour le groupe de rôles**.
 
 Vous avez accordé l’autorisation Gestionnaire eDiscovery.
 
-## Tâche 2 : créer un cas eDiscovery (Premium)
+## Tâche 2 : créer un dossier eDiscovery
 
-Maintenant que vous disposez des autorisations nécessaires, vous pouvez créer un cas eDiscovery pour commencer votre enquête.
+Dans cette tâche, vous allez créer un nouveau dossier eDiscovery afin de gérer l’enquête sur les données de paiement.
 
 1. Dans Microsoft Purview, sélectionnez **Solutions** > **eDiscovery**.
 
-   Cela vous amène directement à l’expérience **classique** d’**eDiscovery (Premium)**.
+1. Sur la page **Dossiers**, sélectionnez **Créer un dossier**.
 
-1. Sur la page **eDiscovery (Premium)**, sélectionnez l’onglet des **Cas**, puis **+ Créer un cas**.
-1. Sur la page volante **Nommer votre cas** à droite, saisissez :
+1. Dans la fenêtre de dialogue **Nouveau dossier**, entrez :
 
-   - **Nom :** `Legal Investigation 2024`
-   - **Description** : `eDiscovery case for the 2024 legal investigation involving relevant emails and documents.`
+   - **Nom du cas** : `Payment Data Leak Investigation`
+   - **Description du cas** : `Investigation into potential exposure of payment card and account data at Contoso.`
 
-1. Cliquez sur **Suivant**.
-1. Sur la page **Ajouter des membres de l’équipe et configurer les paramètres**, veillez à ajouter l’utilisateur qui mènera l’enquête, puis sélectionnez **Suivant**.
-1. Sur la page **Vérifier votre cas**, sélectionnez **Envoyer**, puis **Terminé**.
+1. Sélectionnez **Créer**.
 
-Vous avez créé un cas eDiscovery nommé _Legal Investigation 2024_.
+   Une fois votre dossier créé, vous serez directement redirigé vers votre nouveau dossier.
 
-## Tâche 3 : ajouter des consignataires au cas
+Vous avez créé avec succès un nouveau dossier eDiscovery nommé _Enquête sur la fuite de données de paiement_.
 
-Maintenant que votre cas est créé, vous devez ajouter des consignataires. Les consignataires sont des personnes qui peuvent disposer d’informations pertinentes pour l’enquête.
+## Tâche 3 : créer une recherche eDiscovery
 
-1. Après avoir créé le cas dans la tâche précédente, vous devriez être dans l’onglet **Vue d’ensemble** du cas **Legal Investigation 2024**.
-1. Sélectionnez l’onglet **Sources de données** dans la navigation supérieure, puis **Ajouter une source de données** > **Ajouter de nouveaux consignataires**.
-1. Sur la page volante **Nouveau consignataire**, sous **Sélectionner le consignataire**, ajoutez des consignataires à votre cas, puis sélectionnez **Suivant**.
-1. Sur la page **Paramètres de conservation**, vérifiez que les consignataires que vous avez ajoutés à l’étape précédente sont sélectionnés pour être placés en conservation.
-1. Sur la page **Examiner vos consignataires**, sélectionnez **Envoyer**, puis **Terminé** une fois que vos nouveaux consignataires sont créés.
+Dans cette tâche, vous générez une recherche pour trouver les e-mails et les documents qui font référence à des données de paiement sensibles.
 
-Vous avez ajouté des consignataires au cas _Legal Investigation 2024_.
+1. Sélectionnez **Créer une recherche**.
 
-## Tâche 4 : créer et exécuter une estimation de collection
+1. Dans la fenêtre de dialogue **Nouvelle recherche**, entrez :
 
-Avec les consignataires ajoutés, vous pouvez maintenant exécuter une estimation de collection pour obtenir une vue d’ensemble du volume de données et de la pertinence.
+   - **Nom de recherche** : `Payment Data Exposure Search`
+   - **Description de la recherche** : `Find emails and documents that reference credit cards, debit cards, or account numbers.`
 
-1. Après avoir ajouté des consignataires au cas dans la tâche précédente, vous devriez toujours être dans l’onglet **Sources de données** du cas **Legal Investigation 2024**.  
-1. Sélectionnez l’onglet **Collections** dans la navigation supérieure, puis **+ Nouvelle collection**.
-1. Dans la configuration de **Nouvelle collection**, saisissez **un nom et une description** pour la collection. Entrez :
+1. Sélectionnez **Créer**.
 
-   - **Nom :** `Legal Data Collection`
-   - **Description** : `Collecting emails and documents relevant to the 2024 legal investigation.`
+1. Sur la page **Recherche d’exposition des données de paiement**, sélectionnez **Ajouter des sources**.
 
-1. Cliquez sur **Suivant**.
-1. Sur la page **Choisir des sources de données consignataires**, sélectionnez **+ Sélectionner des consignataires**.
-1. Sur la page volante **Sélectionner des consignataires** à droite, ajoutez les consignataires qui ont été ajoutés au cas dans la tâche précédente, puis sélectionnez **Ajouter**.
-1. De retour sur la page **Choisir des sources de données consignataires**, sélectionnez **Suivant**.
-1. Sur la page **Choisir des sources de données non consignataires**, sélectionnez **Suivant**.
-1. Sur la page **Emplacements supplémentaires**, définissez l’état sur **Activé** pour ces emplacements :
+1. Sur la page **Rechercher une source**, **filtrez** vos sources pour **Groupes uniquement**.
 
-   - Boîtes aux lettres Exchange
-   - Dossiers publics Exchange
+1. Sélectionnez **Ajouter des sources à l’échelle du locataire** et laissez les cases **Toutes les personnes et tous les groupes** et **Tous les dossiers publics** cochées.
 
-1. Cliquez sur **Suivant**.
-1. Sur la page **Définir votre requête de recherche**, utilisez le générateur de requêtes pour créer une recherche afin de rechercher du contenu pertinent pour le cas :
+1. Cliquez sur **Enregistrer**.
 
-   - Utilisez l’opérateur **ET** pour rechercher des **Mots clés** qui sont **Égal** à `legal`.
+1. De retour à la page **Recherche d’exposition des données de paiement**, dans le **Générateur de conditions**, ajoutez des conditions :
 
-    >**Note** : vous devrez peut-être supprimer l’option permettant de **sélectionner un filtre** après avoir créé la requête de recherche pour rechercher des mots clés qui sont **légaux**. Si cette option est présente, elle vous empêche d’ajouter le sous-groupe à l’étape suivante.
-    >![Capture d’écran montrant le générateur de requêtes dans eDiscovery Premium.](./Media/ediscovery-subgroup-bug.png)
+   - Dans la première case, définissez **Mots-clés =**, puis tapez `credit card`.
+   - Dans la deuxième zone, tapez `debit card`.
+   - Dans la troisième zone, tapez `account number`.
 
-   - Sélectionnez **Ajouter un sous-groupe**.
-   - Utilisez l’opérateur **OU** pour rechercher des **Mots clés** qui sont **Égal** à `contract`.
+   > **Remarque** : Les conditions sont considérées comme reliées par un OU, donc la recherche renvoie les éléments contenant « carte de crédit », « carte de débit » ou « numéro de compte ».
 
-    >![Capture d’écran montrant le générateur de requêtes dans eDiscovery Premium.](./Media/ediscovery-query-builder.png)
+1. Sélectionnez **Exécuter la requête**.
 
-1. Cliquez sur **Suivant**.
-1. Sur la page **Vérifier votre collection et la créer**, sélectionnez **Envoyer**, puis **Terminé** sur la page **Nouvelle collection créée**.
-1. De retour sur la page **Collections**, vérifiez la progression de votre estimation de collection. Utilisez le bouton **Actualiser** pour actualiser la page et vérifier l’état de l’estimation de collection. Une fois que l’état de votre estimation passe à **Estimé** et que l’**État de la préversion** passe à **Réussite**, votre estimation de collection est terminée.
+1. Sur la page **Choisir les résultats de recherche**, sélectionnez **Statistiques**, puis cochez **Inclure le rapport sur les mots-clés de la requête**.
 
-    >![Capture d’écran montrant le bouton Actualiser et l’état de l’estimation de collection.](./Media/collection-estimate-status.png)
+1. Sélectionnez **Exécuter la requête** pour lancer la recherche.
 
-    >**Conseil** : une fois votre estimation de collection terminée, n’hésitez pas à expérimenter la création de différentes requêtes ou l’utilisation de l’éditeur KQL pour des recherches plus avancées. Pour ce faire, cochez la case à gauche de l’estimation de collection et sélectionnez **Modifier la collection**. Vous accédez directement à la page **Définir votre requête de recherche**. Vous pouvez modifier votre requête et envoyer une nouvelle estimation de collection pour découvrir comment votre requête modifie votre estimation de collection.
+   > **Remarque** : Ce processus peut prendre environ 5 minutes pour générer les résultats.
 
-1. Sélectionnez la **Legal Data Collection** et explorez l’estimation de collection.
+1. Une fois la recherche terminée, passez en revue vos résultats dans l’onglet **Statistiques**. Consultez le nombre d’éléments, le volume de données et les occurrences des mots-clés.
 
-   - **Onglet Résumé** : fournit une vue d’ensemble des statistiques de la collection, y compris les éléments récupérés, les emplacements avec correspondantes et les types de fichiers.
-   - **Onglet Sources de données** : affiche des informations sur les sources de données consignataires et non consignataires incluses dans la collection.
-   - **Onglet Statistiques de recherche** : affiche les statistiques détaillées de la dernière estimation de collection, y compris le nombre d’éléments et le volume de données.
-   - **Onglet Options de collection** : répertorie et explique les différentes options disponibles lors de la configuration d’une collection, telles que l’inclusion de pièces jointes cloud et de fils de conversation.
+1. Passez à l’onglet **Échantillon**. Sélectionnez **Générer des résultats d’échantillon**.
 
-    >![Capture d’écran montrant les onglets à explorer dans l’estimation de collection Legal Data Collection.](./Media/explore-collection-estimate.png)
+1. Sur la page **Générer une vue d’échantillon**, conservez les valeurs par défaut, puis sélectionnez **Exécuter la requête**.
 
-Vous avez créé et vérifié une collection nommée _Legal Data Collection_.
+   > **Remarque** : Ce processus peut prendre environ 5 minutes pour générer les résultats.
 
-## Tâche 5 : valider la collection dans un jeu à réviser
+1. Une fois la requête terminée, passez en revue les résultats.
 
-Lorsque la collection est satisfaisante, validez-la dans un jeu à réviser pour une analyse détaillée.
+Vous avez exécuté la recherche avec succès et passé en revue les résultats à l’aide des vues Statistiques et Échantillon.
 
-1. Après avoir créé l’estimation de collection dans la tâche précédente, vous devriez toujours être dans l’onglet **Collections** du cas **Legal Investigation 2024**.  
-1. Sélectionnez la collection **Legal Data Collection**.
-1. Sur la page volante **Legal Data Collection** à droite, sélectionnez **Valider la collection**.
-1. Sur la page **Valider les éléments dans un jeu à réviser**, vérifiez que l’option **Ajouter à un nouveau jeu à réviser** est sélectionnée et nommez-le `Legal Case Review`.
-1. Laissez les autres valeurs par défaut sélectionnées et sélectionnez **Valider** pour valider la collection dans un jeu à réviser.
+## Tâche 4 : ajouter votre recherche au jeu de révision
 
-Vous avez validé la collection dans un jeu à réviser.
+Dans cette tâche, vous commitez les résultats de votre recherche dans un jeu de révision afin qu’ils puissent être analysés plus en profondeur.
 
-## Tâche 6 : explorer le jeu à réviser
+1. Dans la page **Recherche d’exposition des données de paiement**, sélectionnez **Ajouter au jeu de révision**.
 
-1. Après avoir validé la collection dans un jeu à réviser dans la tâche précédente, vous devriez toujours être dans l’onglet **Collections** du cas **Legal Investigation 2024**.
-1. Sélectionnez l’onglet **Jeux à réviser** dans la navigation supérieure, puis le nouveau jeu à réviser créé **Legal Case Review**.
-1. Sur la page volante **Legal Case Review** à droite, sélectionnez **Ouvrir le jeu à réviser** en bas de la page.
-1. Découvrez ce que vous pouvez faire avec les éléments de votre jeu à réviser :
+1. Dans le menu volant **Ajouter au jeu de révision**, sélectionnez **Ajouter au nouveau jeu de révision**.
 
-   1. **Filtres** : vous permet d’appliquer des conditions pour affiner les éléments affichés dans le jeu à réviser.
-   1. **Étiquette** : vous permet d’étiqueter des documents avec des étiquettes spécifiques pour une meilleure organisation et une meilleure identification.
-   1. **Regrouper** : vous permet d’organiser le contenu du jeu à réviser par éléments connexes tels que des familles ou des conversations.
-   1. **Afficher la source** : fournit une vue enrichie du document sélectionné, en l’affichant dans son format d’origine.
-   1. **Afficher le texte brut** : affiche le texte extrait d’un document, en ignorant les images incorporées et la mise en forme.
-   1. **Annoter** : permet aux utilisateurs d’appliquer des balisages, des corrections et d’autres annotations sur le document.
-   1. **Afficher les métadonnées** : affiche différentes métadonnées associées au document sélectionné pour obtenir des informations détaillées.
+   - Entrez un nom : `Payment Data Review Set`.
 
-    >![Capture d’écran montrant les options disponibles pour les jeux à réviser dans eDiscovery Premium.](./Media/review-set.png)
+1. Sous **Sélectionner les éléments à inclure**, conservez **Éléments indexés correspondant à votre requête de recherche sélectionnés**.
 
-1. Une fois que vous avez exploré votre jeu à réviser, vous pouvez exporter des éléments pour une analyse approfondie.
+1. Sous **Sélectionner les éléments dans les listes et les pièces jointes**, sélectionnez **Pièces jointes de la liste** afin que les fichiers joints soient inclus dans le jeu de révision.
 
-Vous avez ouvert et vérifié votre jeu à réviser.
+1. Laissez toutes les autres options par défaut, puis sélectionnez **Ajouter au jeu de révision**.
 
-## Tâche 7 : exporter les résultats de la recherche
+   > **Remarque** : Ce processus peut prendre environ 5 minutes pour générer les résultats.
 
-Pour enregistrer votre travail et pouvoir effectuer une analyse approfondie, vous allez exporter les résultats de la recherche.
+Vous avez créé avec succès le **Jeu de révision des données de paiement** et y avez ajouté vos résultats de recherche.
 
-1. Vous devriez toujours être dans le jeu à réviser **Legal Case Review** dans eDiscovery (Premium).
-1. Cochez la case en regard des éléments que vous souhaitez exporter pour une analyse approfondie.
-1. Sélectionnez la liste déroulante pour **Actions** > **Exporter**.
+## Tâche 5 : passer en revue et marquer les éléments
 
-    >![Capture d’écran montrant l’option d’exportation d’un jeu à réviser dans eDiscovery Premium.](./Media/export-review-set.png)
+Dans cette tâche, vous filtrez les éléments du jeu de révision et appliquez des étiquettes afin de les organiser pour l’enquête.
 
-1. Sur la page volante **Options d’exportation** à droite, saisissez :
+1. Sur la page **Jeu de révision des données de paiement**, sélectionnez **Requête**, puis configurez :
 
-   - **Nom de l’exportation** : `LegalCaseExport_July2024`
-   - **Description** : `Export of relevant emails and documents for the July 2024 legal case investigation.`
-   - **Exporter ces documents** : Documents sélectionnés uniquement
-   - **Développer la sélection** : Aucun
-   - **Options de sortie** : Structure de répertoires condensée
+   - Premier menu déroulant : **Mots clés**
+   - Opérateur : **Est égal à l’un des éléments suivants**
+   - Entrez des mots clés :
 
-1. Sélectionnez le bouton **Exporter** en bas de la page volante.
+     - `Visa`
+     - `Master Card`
+   - Cliquez sur **+ Ajouter des conditions**.
+   - Ajouter une condition :
 
-    >![Capture d’écran montrant les options de configuration pour l’exportation d’un jeu à réviser.](./Media/export-options-review-set.png)
+     - Champ : **Classe de fichier**
+     - Opérateur : **Est égal à l’un des éléments suivants**
+     - Valeur: `Document`
+   - Sélectionnez **Exécuter la requête**.
 
-1. Vous devriez recevoir une notification indiquant **Une tâche a été créée** pour exporter votre jeu à réviser. Sélectionnez **OK** sur cette notification.
-1. Pour accéder à votre jeu à réviser exporté, développez **Cas Premium** dans le volet de navigation de gauche, puis sélectionnez **Cas**. Sélectionnez le cas **Legal Investigation 2024**, puis l’onglet **Exportations** dans la navigation supérieure.
-1. Sélectionnez l’exportation **LegalCaseExport_July2024**.
-1. Sur la page volante **LegalCaseExport_July2024** à droite, cochez la case à gauche de chaque fichier exporté, puis sélectionnez **Télécharger**. Cette opération télécharge un résumé .csv et un fichier zip d’éléments exportés.
+1. Sélectionnez **Enregistrer** pour enregistrer cette requête de recherche. Dans le champ Nom du filtre, entrez `Payment data docs`.
 
-    >**Conseil** : vous devrez peut-être désactiver votre bloqueur de fenêtres publicitaires pour télécharger correctement les fichiers exportés.
+1. Dans la barre de commandes, sélectionnez **Étiqueter les fichiers**.
 
-Vous avez exporté les résultats de la recherche pour révision.
+1. Dans le menu volant **Étiqueter les fichiers**, sélectionnez **Créer/modifier des étiquettes**.
+
+1. Sur la page **Gérer les étiquettes**, configurez :
+
+   - **Nom du groupe d’étiquettes** : `Relevance`
+
+     - **Nom de l’étiquette** : `Relevant`
+     - Sélectionnez **Ajouter une étiquette**, puis ajoutez `Not relevant`
+   - Sélectionnez **Ajouter un groupe d’étiquettes**.
+   - **Nom du groupe d’étiquettes** : `Review status`
+     - **Nom de l’étiquette** : `Needs redaction`
+
+1. Sélectionnez **Enregistrer**, puis **Fermer**.
+
+1. Dans le menu volant **Étiqueter les fichiers**, appliquez l’étiquette **Pertinent** au premier élément et l’étiquette **Non pertinent** au deuxième élément.
+
+1. Dans le jeu de révision, recherchez **Contoso Purchasing Permissions - Q1.docx** de **Irvin S** daté du **2 août 2019**.
+
+1. Sélectionnez l’élément et étiquetez-le comme **À masquer**.
+
+1. Sélectionnez **Fermer** pour fermer le menu volant **Étiqueter les fichiers**.
+
+Vous avez correctement étiqueté les documents Pertinent, Non pertinent et À masquer.
+
+## Tâche 6 : appliquer des masquages
+
+Dans cette tâche, vous masquez les informations sensibles d’un document dans votre jeu de révision.
+
+1. Dans le **Jeu de révision des données de paiement**, sélectionnez l’élément **Contoso Purchasing Permissions - Q1.docx** de **Irvin S** daté du **2 août 2019** pour ouvrir la visionneuse de documents.
+
+1. Dans la barre d’outils de la visionneuse, sélectionnez **Annoter**.
+
+1. Dans les outils d’annotation, ouvrez le menu déroulant **Dessin**, puis sélectionnez **Masquage de zone**.
+
+    >![Capture d’écran indiquant où sélectionner Masquage de zone.](./Media/area-redaction.png)
+
+1. À l’aide de votre curseur, tracez un cadre autour des informations sensibles contenues dans le fichier, telles que :
+
+   - Numéro de carte Visa
+   - Numéro de carte MasterCard
+   - Numéro de compte bancaire
+
+1. Répétez l’opération autant que nécessaire jusqu’à ce que toutes les données sensibles soient masquées.
+
+1. Fermez la visionneuse de documents.
+
+1. De retour sur la page **Jeu de révision des données de paiement**, avec le fichier **Contoso Purchasing Permissions - Q1.docx** sélectionné, choisissez **Actions** > **Appliquer les masquages au PDF**.
+
+   > **Remarque** : Valider les masquages permet d’enregistrer un PDF masqué dans le jeu de révision tout en conservant le fichier d’origine inchangé.
+
+Vous avez correctement appliqué les masquages et les avez validés dans une copie PDF masquée.
+
+## Tâche 7 : exporter les résultats
+
+Dans cette tâche, vous exportez les éléments masqués et étiquetés de votre jeu de révision en vue de leur production.
+
+1. Dans le **Jeu de révision des données de paiement**, cochez les cases des éléments que vous souhaitez exporter.
+
+   > Assurez-vous d’inclure le document **Contoso Purchasing Permissions - Q1.docx** que vous avez masqué.
+
+1. Dans la barre de commandes, sélectionnez **Actions** > **Exporter**.
+
+1. Dans le menu volant **Exporter**, configurez :
+
+   - **Nom de l’exportation** : `PaymentData_Export_2025`
+   - **Description** : `Export of review set items with redacted versions for Payment Data Leak Investigation.`
+
+1. Sous **Sélectionner les éléments à inclure dans l’exportation** :
+
+   - Choisissez **Documents sélectionnés uniquement**.
+   - Laissez la case **Développer les documents sélectionnés pour inclure > Éléments associés de la famille** cochée (cela permet d’inclure les pièces jointes).
+
+1. Sous **Type d’exportation**, sélectionnez **Exporter les éléments avec le rapport sur les éléments**.
+
+   - Cochez la case **Exporter les masquages** pour inclure les PDF masqués et la case **Exporter les étiquettes** pour inclure les informations d’étiquetage.
+
+1. Sous **Format d’exportation**, sélectionnez **Créer des fichiers .msg pour les messages** et laissez toutes les autres options par défaut sélectionnées.
+
+1. Sélectionnez **Exporter**.
+
+1. Sélectionnez le **Gestionnaire de processus** pour afficher l’état de l’exportation.
+
+1. Sélectionnez **Actualiser** dans le gestionnaire de processus jusqu’à ce que le statut de l’exportation soit **Terminé**.
+
+1. Une fois que le statut est **Terminé**, sélectionnez la ligne correspondant à votre exportation.
+
+1. Dans le menu volant **Exporter**, sélectionnez tous les fichiers sous **Exporter les packages**, puis **Télécharger**.
+
+1. Sélectionnez un emplacement pour télécharger vos exportations, puis accédez à l’emplacement de vos exportations téléchargées.
+
+1. Explorez les éléments de votre fichier zip.
+
+Vous avez créé un dossier, recherché des données sensibles, ajouté des éléments à un jeu de révision, appliqué des étiquettes et des masquages, puis exporté les résultats masqués. Ce sont les étapes clés pour mener une enquête avec Microsoft Purview eDiscovery.
